@@ -7,37 +7,6 @@ AWS上に個人ポートフォリオサイトを構築する。
 一般ユーザーは作品・記事・プロフィールを閲覧できる。  
 管理者のみがCognito経由でGoogleログインし、管理画面からコンテンツを更新できる。
 
-## システム構成
-
-```mermaid
-flowchart TD
-    User[一般ユーザー]
-    Admin[管理者]
-
-    CF[CloudFront]
-    Next[Next.js Frontend]
-
-    Cognito[Cognito]
-    Google[Google OAuth]
-
-    APIGW[API Gateway]
-    Lambda[Go Lambda]
-    DynamoDB[DynamoDB]
-
-    User --> CF
-    Admin --> CF
-    CF --> Next
-
-    Admin --> Cognito
-    Cognito --> Google
-    Google --> Cognito
-    Cognito --> Next
-
-    Next --> APIGW
-    APIGW --> Lambda
-    Lambda --> DynamoDB
-```
-
 ## 技術スタック
 
 - Frontend: Next.js / TypeScript
