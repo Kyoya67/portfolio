@@ -145,13 +145,15 @@ type Work = {
 
 type Article = {
   id: string;
+  source: "zenn" | "qiita";
+  sourceId: string;
   title: string;
+  url: string;
   excerpt: string;
-  body: string;
   tags: string[];
-  published: boolean;
-  createdAt: string;
-  updatedAt: string;
+  publishedAt: string;
+  fetchedAt: string;
+  isPublished: boolean;
 };
 
 type Profile = {
